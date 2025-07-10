@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "howler": "^2.2.3",
+    "pdf-lib": "^1.17.1",
+    "particles.js": "^2.0.0"
+  },
+  "scripts": {
+    "build": "tailwindcss -i ./input.css -o ./output.css"
+  }
+}

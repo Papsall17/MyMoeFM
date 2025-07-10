@@ -1,0 +1,290 @@
+<!-- C:\Users\user\radio-website\index.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio Stasi</title>
+  <link href="./output.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+  <script src="node_modules/aos/dist/aos.js"></script>
+  <link href="node_modules/aos/dist/aos.css" rel="stylesheet">
+  <script src="node_modules/howler/dist/howler.min.js"></script>
+  <script src="node_modules/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="node_modules/particles.js/particles.min.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Navigasi utama">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-full">
+        <div class="flex items-center">
+          <span class="text-2xl font-poppins font-bold neon-text">Radio Stasi</span>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="#home" class="text-accent hover:text-neon font-poppins text-lg neon-text" aria-label="Ke halaman beranda">Beranda</a>
+          <a href="#news" class="text-accent hover:text-neon font-poppins text-lg neon-text" aria-label="Ke halaman berita">Berita</a>
+          <a href="#prices" class="text-accent hover:text-neon font-poppins text-lg neon-text" aria-label="Ke halaman harga pasar">Harga Pasar</a>
+          <a href="#complaints" class="text-accent hover:text-neon font-poppins text-lg neon-text" aria-label="Ke halaman aduan">Aduan</a>
+          <a href="#about" class="text-accent hover:text-neon font-poppins text-lg neon-text" aria-label="Ke halaman tentang kami">Tentang</a>
+          <a href="#" id="admin-login" class="text-accent hover:text-neon font-poppins text-lg neon-text" aria-label="Login admin">Admin</a>
+        </div>
+        <div class="md:hidden">
+          <button id="menu-toggle" class="text-accent" aria-label="Buka menu"><i class="fas fa-bars text-2xl"></i></button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="hidden md:hidden">
+        <a href="#home" class="block py-2 px-4 text-accent hover:bg-accent hover:text-primary font-poppins" aria-label="Ke halaman beranda">Beranda</a>
+        <a href="#news" class="block py-2 px-4 text-accent hover:bg-accent hover:text-primary font-poppins" aria-label="Ke halaman berita">Berita</a>
+        <a href="#prices" class="block py-2 px-4 text-accent hover:bg-accent hover:text-primary font-poppins" aria-label="Ke halaman harga pasar">Harga Pasar</a>
+        <a href="#complaints" class="block py-2 px-4 text-accent hover:bg-accent hover:text-primary font-poppins" aria-label="Ke halaman aduan">Aduan</a>
+        <a href="#about" class="block py-2 px-4 text-accent hover:bg-accent hover:text-primary font-poppins" aria-label="Ke halaman tentang kami">Tentang</a>
+        <a href="#" id="mobile-admin-login" class="block py-2 px-4 text-accent hover:bg-accent hover:text-primary font-poppins" aria-label="Login admin">Admin</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero relative" role="banner">
+    <div id="particles-js"></div>
+    <div class="text-center relative z-10">
+      <img src="assets/images/logo.png" alt="Logo Radio Stasi" class="mx-auto h-32 w-auto mb-6 animate-slide-up" data-aos-delay="100">
+      <h1 class="text-5xl font-poppins font-bold mb-4 animate-slide-up flicker-text">Radio Stasi</h1>
+      <p class="text-xl mb-6 animate-slide-up font-poppins neon-text" data-aos-delay="200">Suara Anda, Cerita Kami</p>
+      <button class="btn font-poppins text-lg" onclick="playRadio()" aria-label="Putar radio">Dengarkan Sekarang</button>
+    </div>
+  </section>
+
+  <!-- Audio Player -->
+  <section class="section" aria-label="Pemutar radio">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl font-poppins font-bold mb-6 text-center flicker-text">Streaming Radio</h2>
+      <div class="card flex justify-center">
+        <audio id="radio-player" controls aria-label="Kontrol pemutar radio">
+          <source src="https://example.com/radio-stream.mp3" type="audio/mpeg">
+          Browser Anda tidak mendukung pemutar audio.
+        </audio>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prices Widget and Ad -->
+  <section id="prices" class="section bg-primary">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-6">
+      <div class="flex-1">
+        <h2 class="text-3xl font-poppins font-bold mb-6 text-center flicker-text">Harga Pasar</h2>
+        <div class="widget" role="region" aria-label="Widget harga pasar">
+          <h3 class="text-lg font-poppins font-semibold mb-2 neon-text">Harga Barang Hari Ini</h3>
+          <ul id="price-list" class="space-y-2"></ul>
+          <p class="text-sm text-gray-400 mt-2">Terakhir diperbarui: <span id="last-updated"></span></p>
+        </div>
+      </div>
+      <div class="ad-container" role="region" aria-label="Iklan atau flyer">
+        <img src="assets/images/flyer.jpg" alt="Iklan atau flyer Radio Stasi" class="w-full h-auto rounded-lg">
+        <p class="text-sm text-center text-gray-400 mt-2 neon-text">Iklan Radio Stasi</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section id="news" class="section bg-primary" aria-label="Berita terbaru">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl font-poppins font-bold mb-6 text-center flicker-text">Berita Terbaru</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="news-grid">
+        <!-- Berita diisi via JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Complaints Section -->
+  <section id="complaints" class="section" aria-label="Formulir aduan">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl font-poppins font-bold mb-6 text-center flicker-text">Aduan Masyarakat</h2>
+      <form id="complaint-form" class="card max-w-lg mx-auto">
+        <div class="mb-4">
+          <label for="name" class="block text-sm font-semibold font-poppins neon-text">Nama</label>
+          <input type="text" id="name" class="w-full p-2 rounded bg-secondary text-white font-poppins" required aria-required="true">
+        </div>
+        <div class="mb-4">
+          <label for="complaint" class="block text-sm font-semibold font-poppins neon-text">Aduan</label>
+          <textarea id="complaint" class="w-full p-2 rounded bg-secondary text-white font-poppins" rows="4" required aria-required="true"></textarea>
+        </div>
+        <button type="submit" class="btn font-poppins" aria-label="Kirim aduan">Kirim Aduan</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section bg-primary" aria-label="Tentang kami">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-3xl font-poppins font-bold mb-6 flicker-text">Tentang Kami</h2>
+      <p class="text-lg mb-4 font-poppins neon-text" data-aos="fade-in">Radio Stasi adalah suara komunitas, menyampaikan informasi dan hiburan dengan integritas.</p>
+      <img src="assets/images/team.jpg" alt="Tim Radio Stasi" class="mx-auto rounded-lg" data-aos="fade-in" data-aos-delay="100">
+    </div>
+  </section>
+
+  <!-- Admin Login Modal -->
+  <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50" role="dialog" aria-label="Modal login admin">
+    <div class="card p-8 max-w-sm w-full" data-aos="fade-in">
+      <h2 class="text-2xl font-poppins font-bold mb-4 flicker-text">Login Admin</h2>
+      <form id="admin-login-form">
+        <div class="mb-4">
+          <label for="username" class="block text-sm font-semibold font-poppins neon-text">Username</label>
+          <input type="text" id="username" class="w-full p-2 rounded bg-secondary text-white font-poppins" required aria-required="true">
+        </div>
+        <div class="mb-4">
+          <label for="password" class="block text-sm font-semibold font-poppins neon-text">Kata Sandi</label>
+          <input type="password" id="password" class="w-full p-2 rounded bg-secondary text-white font-poppins" required aria-required="true">
+        </div>
+        <button type="submit" class="btn w-full font-poppins" aria-label="Masuk sebagai admin">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Inisialisasi AOS
+    AOS.init({ duration: 1000 });
+
+    // Inisialisasi Particles.js
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 200, density: { enable: true, value_area: 800 } },
+        color: { value: ['#d4af37', '#00ffcc', '#ff007a', '#00b7eb'] },
+        shape: { type: ['circle', 'triangle', 'star'], polygon: { nb_sides: 5 } },
+        opacity: { value: 0.8, random: true },
+        size: { value: 6, random: true },
+        line_linked: { enable: true, distance: 90, color: '#00ffcc', opacity: 0.7, width: 1.8 },
+        move: { enable: true, speed: 12, direction: 'random', random: true }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' } },
+        modes: { grab: { distance: 160 }, push: { particles_nb: 6 } }
+      },
+      retina_detect: true
+    });
+
+    // Hamburger Menu
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Radio Player
+    const sound = new Howl({
+      src: ['https://example.com/radio-stream.mp3'],
+      html5: true,
+      volume: 0.5
+    });
+    function playRadio() {
+      sound.play();
+    }
+
+    // Admin Modal
+    document.getElementById('admin-login').addEventListener('click', () => {
+      document.getElementById('admin-modal').classList.remove('hidden');
+    });
+    document.getElementById('mobile-admin-login').addEventListener('click', () => {
+      document.getElementById('admin-modal').classList.remove('hidden');
+    });
+
+    // Login Admin
+    document.getElementById('admin-login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      try {
+        const response = await fetch('http://localhost:3001/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await response.json();
+        if (response.ok) {
+          localStorage.setItem('token', data.token);
+          alert('Login berhasil');
+          document.getElementById('admin-modal').classList.add('hidden');
+          // Redirect ke dashboard admin (buat halaman terpisah nanti)
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        alert('Error saat login');
+      }
+    });
+
+    // Complaint Form
+    document.getElementById('complaint-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const complaint = document.getElementById('complaint').value;
+      try {
+        const response = await fetch('http://localhost:3001/api/complaints', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, complaint })
+        });
+        const data = await response.json();
+        if (response.ok) {
+          alert('Aduan dikirim!');
+          document.getElementById('complaint-form').reset();
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        alert('Error saat mengirim aduan');
+      }
+    });
+
+    // Price Widget
+    async function updatePrices() {
+      try {
+        const response = await fetch('http://localhost:3001/api/prices');
+        const prices = await response.json();
+        const priceList = document.getElementById('price-list');
+        const lastUpdated = document.getElementById('last-updated');
+        priceList.innerHTML = '';
+        prices.slice(0, 5).forEach(item => {
+          const li = document.createElement('li');
+          li.className = 'flex justify-between text-sm neon-text';
+          li.innerHTML = `<span>${item.item}</span><span>Rp ${item.price.toLocaleString('id-ID')}</span>`;
+          priceList.appendChild(li);
+        });
+        lastUpdated.textContent = prices.length ? new Date(prices[0].updatedAt).toLocaleDateString('id-ID') : '-';
+      } catch (error) {
+        console.error('Error fetching prices:', error);
+      }
+    }
+    updatePrices();
+
+    // Ad/Flyer Fetch
+    async function updateAd() {
+      try {
+        const response = await fetch('http://localhost:3001/api/ads');
+        const ads = await response.json();
+        const adContainer = document.querySelector('.ad-container');
+        if (ads.length > 0) {
+          adContainer.innerHTML = `
+            <img src="${ads[0].imageUrl}" alt="${ads[0].title}" class="w-full h-auto rounded-lg">
+            <p class="text-sm text-center text-gray-400 mt-2 neon-text">${ads[0].title}</p>
+          `;
+        }
+      } catch (error) {
+        console.error('Error fetching ad:', error);
+      }
+    }
+    updateAd();
+
+    // PDF Generation
+    async function generatePDF() {
+      const { PDFDocument } = PDFLib;
+      const pdfDoc = await PDFDocument.create();
+      const page = pdfDoc.addPage();
+      page.drawText('Naskah Radio Stasi', { x: 50, y: 500 });
+      const pdfBytes = await pdfDoc.save();
+      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      window.open(url);
+    }
+  </script>
+</body>
+</html>
