@@ -1,28 +1,56 @@
 <!DOCTYPE html>
 <html lang="id">
   <head>
-    <header class="flex items-center justify-between p-4 bg-gray-900">
-  <div class="flex items-center space-x-4">
-    <img src="logo.png" alt="Logo MY MOE FM" class="h-12 w-auto">
-    <h1 class="text-yellow-400 text-xl font-bold">MY MOE FM</h1>
-  </div>
-  <nav class="hidden md:flex space-x-6 text-gray-300">
-    <a href="#" class="hover:text-yellow-400">Beranda</a>
-    <a href="#" class="hover:text-yellow-400">Berita</a>
-    <a href="#" class="hover:text-yellow-400">Tentang</a>
-  </nav>
-</header>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MY MOE FM</title>
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Custom Font Setup -->
     <style>
-      body { font-family: sans-serif; }
+      body { font-family: 'Poppins', sans-serif; }
     </style>
   </head>
-  <body class="bg-black text-white text-center py-20">
-    <h1 class="text-4xl font-bold text-yellow-400 mb-4">Halo Dhirga! 🎉</h1>
-    <p class="text-lg text-gray-300">Website kamu sudah tampil dengan Tailwind!</p>
-    <a href="#" class="mt-6 inline-block px-6 py-3 bg-yellow-400 text-black rounded hover:bg-yellow-300 transition">Tombol Tes</a>
+
+  <body class="bg-black text-white">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-gray-900 bg-opacity-95 shadow-md">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <!-- Logo from root folder -->
+          <img src="logo.png" alt="Logo MY MOE FM" class="h-10 w-auto" />
+          <span class="text-yellow-400 font-bold text-xl">MY MOE FM</span>
+        </div>
+        <nav class="hidden md:flex space-x-6 text-gray-300 text-sm font-medium">
+          <a href="#" class="hover:text-yellow-400">Beranda</a>
+          <a href="#" class="hover:text-yellow-400">Berita</a>
+          <a href="#" class="hover:text-yellow-400">Harga Pasar</a>
+          <a href="#" class="hover:text-yellow-400">Aduan</a>
+          <a href="#" class="hover:text-yellow-400">Tentang</a>
+          <a href="#" class="hover:text-yellow-400">Admin</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="text-center py-20 bg-gradient-to-b from-black via-gray-900 to-black">
+      <h1 class="text-5xl font-bold text-yellow-400 mb-4 drop-shadow-lg">Radio Stasi</h1>
+      <p class="text-xl text-gray-300 mb-6">Suara Anda, Cerita Kami</p>
+      <a href="#play" class="inline-block px-8 py-3 bg-yellow-400 text-black font-semibold rounded hover:bg-yellow-300 transition">
+        Dengarkan Sekarang
+      </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-6 text-center text-sm text-gray-400">
+      © 2025 MY MOE FM — Semua Hak Dilindungi
+    </footer>
+
   </body>
 </html>
