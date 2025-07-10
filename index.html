@@ -10,8 +10,8 @@
 
     <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-    
-    <!-- Font Custom -->
+
+    <!-- Font Setup -->
     <style>
       body {
         font-family: 'Poppins', sans-serif;
@@ -20,17 +20,33 @@
   </head>
   <body class="bg-black text-white">
 
-    <!-- Header dengan background gambar -->
-    <header class="relative h-48 bg-center bg-cover flex items-center justify-center shadow-lg"
+    <!-- Header dengan background logo + overlay -->
+    <header class="relative h-52 md:h-64 flex items-center justify-center bg-cover bg-center shadow-md"
       style="background-image: url('logo.png');">
-      <div class="bg-black bg-opacity-60 w-full h-full absolute top-0 left-0 z-0"></div>
-      <h1 class="z-10 text-yellow-400 font-bold text-3xl md:text-4xl drop-shadow-lg">MY MOE FM</h1>
+      <!-- Overlay gelap agar teks terbaca -->
+      <div class="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
+
+      <!-- Konten header -->
+      <div class="relative z-10 w-full text-center px-4">
+        <h1 class="text-yellow-400 font-bold text-3xl md:text-4xl drop-shadow-lg">MY MOE FM</h1>
+        <p class="text-gray-300 text-sm md:text-base mt-2">Suara Anda, Cerita Kami</p>
+
+        <!-- Navigasi -->
+        <nav class="mt-4 flex justify-center flex-wrap gap-4 text-gray-300 text-sm font-medium">
+          <a href="#" class="hover:text-yellow-400 transition">Beranda</a>
+          <a href="#" class="hover:text-yellow-400 transition">Berita</a>
+          <a href="#" class="hover:text-yellow-400 transition">Harga Pasar</a>
+          <a href="#" class="hover:text-yellow-400 transition">Aduan</a>
+          <a href="#" class="hover:text-yellow-400 transition">Tentang</a>
+          <a href="#" class="hover:text-yellow-400 transition">Admin</a>
+        </nav>
+      </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="text-center py-24 bg-gradient-to-b from-black via-gray-900 to-black">
+    <section class="text-center py-20 bg-gradient-to-b from-black via-gray-900 to-black">
       <h2 class="text-5xl font-bold text-yellow-400 mb-4 drop-shadow-md">Radio Stasi</h2>
-      <p class="text-xl text-gray-300 mb-6">Suara Anda, Cerita Kami</p>
+      <p class="text-xl text-gray-300 mb-6">Sajian audio digital yang bicara untuk Anda</p>
       <a href="#play" class="inline-block px-8 py-3 bg-yellow-400 text-black font-semibold rounded hover:bg-yellow-300 transition">
         Dengarkan Sekarang
       </a>
