@@ -10,39 +10,26 @@
 
     <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-
-    <!-- Font Setup -->
+    
+    <!-- Font Custom -->
     <style>
       body {
         font-family: 'Poppins', sans-serif;
       }
     </style>
   </head>
-
   <body class="bg-black text-white">
 
-    <!-- Header -->
-    <header class="sticky top-0 z-50 bg-gray-900 bg-opacity-95 shadow-md">
-      <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-        <div class="flex items-center space-x-4">
-          <!-- Gambar Logo -->
-          <img src="logo.png" alt="Logo MY MOE FM" class="h-16 w-auto rounded-sm shadow-sm" />
-          <span class="text-yellow-400 font-bold text-xl">MY MOE FM</span>
-        </div>
-        <nav class="hidden md:flex space-x-6 text-gray-300 text-sm font-medium">
-          <a href="#" class="hover:text-yellow-400">Beranda</a>
-          <a href="#" class="hover:text-yellow-400">Berita</a>
-          <a href="#" class="hover:text-yellow-400">Harga Pasar</a>
-          <a href="#" class="hover:text-yellow-400">Aduan</a>
-          <a href="#" class="hover:text-yellow-400">Tentang</a>
-          <a href="#" class="hover:text-yellow-400">Admin</a>
-        </nav>
-      </div>
+    <!-- Header dengan background gambar -->
+    <header class="relative h-48 bg-center bg-cover flex items-center justify-center shadow-lg"
+      style="background-image: url('logo.png');">
+      <div class="bg-black bg-opacity-60 w-full h-full absolute top-0 left-0 z-0"></div>
+      <h1 class="z-10 text-yellow-400 font-bold text-3xl md:text-4xl drop-shadow-lg">MY MOE FM</h1>
     </header>
 
     <!-- Hero Section -->
     <section class="text-center py-24 bg-gradient-to-b from-black via-gray-900 to-black">
-      <h1 class="text-5xl font-bold text-yellow-400 mb-4 drop-shadow-md">Radio Stasi</h1>
+      <h2 class="text-5xl font-bold text-yellow-400 mb-4 drop-shadow-md">Radio Stasi</h2>
       <p class="text-xl text-gray-300 mb-6">Suara Anda, Cerita Kami</p>
       <a href="#play" class="inline-block px-8 py-3 bg-yellow-400 text-black font-semibold rounded hover:bg-yellow-300 transition">
         Dengarkan Sekarang
